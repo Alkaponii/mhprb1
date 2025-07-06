@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carta Especial</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --fondo-claro: #ffeaf1;
+      --fondo-azul: #e3f0ff;
+      --acento: #ff92c2;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--fondo-claro), var(--fondo-azul));
+      height: 100vh;
+      font-family: 'Quicksand', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Elementos flotantes Pokémon */
+    .poke {
+      position: absolute;
+      width: 50px;
+      opacity: 0.5;
+      animation: float 10s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    .poke1 { top: 10%; left: 8%; animation-delay: 0s; }
+    .poke2 { bottom: 15%; right: 10%; animation-delay: 2s; }
+    .poke3 { top: 25%; right: 20%; animation-delay: 4s; }
+    .poke4 { bottom: 10%; left: 15%; animation-delay: 3s; }
+    .poke5 { top: 50%; left: 45%; animation-delay: 5s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(10deg); }
+    }
+
+    /* Botón */
+    .show-btn {
+      padding: 15px 30px;
+      background-color: var(--acento);
+      color: white;
+      border: none;
+      font-size: 1.2em;
+      border-radius: 50px;
+      cursor: pointer;
+      z-index: 2;
+      box-shadow: 0 0 10px rgba(255, 146, 194, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+
+    .show-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 146, 194, 0.8);
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 10px rgba(255, 146, 194, 0.5); }
+      50% { box-shadow: 0 0 20px rgba(255, 146, 194, 1); }
+    }
+
+    /* Carta */
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      z-index: 2;
+      text-align: center;
+      opacity: 0;
+      transform: scale(0.9);
+      pointer-events: none;
+      transition: all 0.8s ease;
+      position: absolute;
+    }
+
+    .card.visible {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.7em;
+      color: var(--acento);
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 1.1em;
+      color: #444;
+      line-height: 1.6;
+      white-space: pre-line;
+    }
+
+    .firma {
+      margin-top: 25px;
+      font-style: italic;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Elementos flotantes Pokémon -->
+  <img src="https://cdn-icons-png.flaticon.com/512/188/188987.png" class="poke poke1" alt="Pokéball">
+  <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" class="poke poke2" alt="Pikachu">
+  <img src="https://pngimg.com/uploads/pokemon/pokemon_PNG151.png" class="poke poke3" alt="Charmander">
+  <img src="https://pngimg.com/uploads/pokemon/pokemon_PNG153.png" class="poke poke4" alt="Bulbasaur">
+  <img src="https://pngimg.com/uploads/pokemon/pokemon_PNG159.png" class="poke poke5" alt="Squirtle">
+
+  <!-- Botón -->
+  <button class="show-btn" onclick="mostrarCarta()">Ver carta</button>
+
+  <!-- Carta -->
+  <div class="card" id="carta">
+    <h1>Para mi amiga</h1>
+    <p>
+      Eres como ese Pokémon raro que aparece solo una vez en la vida:
+      brillante, especial y absolutamente increíble.
+
+      Gracias por compartir tu energía, por estar ahí cuando más se necesita
+      y por ser una de esas personas que hacen todo mejor.
+
+      Nunca cambies.
+    </p>
+    <div class="firma">Con cariño,<br>Tu amigo/a 💖</div>
+  </div>
+
+  <script>
+    function mostrarCarta() {
+      document.querySelector('.show-btn').style.display = 'none';
+      document.getElementById('carta').classList.add('visible');
+    }
+  </script>
+
+</body>
+</html>
